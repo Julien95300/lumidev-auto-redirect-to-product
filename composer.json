@@ -1,0 +1,20 @@
+{
+    "name": "lumidev/auto-redirect-to-product",
+    "description": "Le module LumiDev Auto Redirect To Product permet de rediriger l'utilisateur directement sur la fiche produit lorsque la catégorie sur laquelle il a cliqué contient qu'un seul produit.",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "require": {
+        "php": ">=7.4",
+        "magento/framework": "*"
+    },
+    "license": "proprietary",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "LumiDev\\AutoRedirectToProduct\\": ""
+        }
+    }
+}
+
