@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "require": {
         "php": ">=7.4",
-        "magento/framework": "*"
+        "magento/framework": "^103.0"
     },
     "license": "proprietary",
     "autoload": {
