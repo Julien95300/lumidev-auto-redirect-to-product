@@ -1,6 +1,6 @@
 <?php
 
-namespace JIndustry\AutoRedirectToProduct\Observer;
+namespace LumiDev\AutoRedirectToProduct\Observer;
 
 use GuzzleHttp\Client;
 use Magento\Framework\Event\Observer;
