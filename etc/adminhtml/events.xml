@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../lib/internal/Magento/Framework/Event/etc/events.xsd">
+    <event name="admin_system_config_changed_section_auto_redirect_toproduct">
+        <observer name="auto_redirect_toproduct" instance="LumiDev\AutoRedirectToProduct\Observer\VerifyActivationKey" />
+    </event>
+</config>

@@ -1,11 +1,10 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/config.xsd">
     <default>
-        <autoredirecttoproduct>
-            <general>
-                <enabled>1</enabled> <!-- module activé par défaut -->
-            </general>
-        </autoredirecttoproduct>
+        <auto_redirect_toproduct>
+            <activation>
+                <enable>0</enable> <!-- module activé par défaut -->
+            </activation>
+        </auto_redirect_toproduct>
     </default>
 </config>
-

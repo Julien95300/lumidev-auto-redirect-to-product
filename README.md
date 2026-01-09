@@ -11,15 +11,24 @@ Il améliore l'expérience client en leur faisant gagner du temps.
 
 ## Installation
 
-### Via composer
-1.composer require lumidev/auto-redirect-to-product
+1. Installer Composer :
+ # Install Composer
+ curl -sS https://getcomposer.org/installer | php
+
+2. Très important il faut installer guzzlehttp pour pouvoir valider la clé pour activer le module 
+ # via composer
+ composer require guzzlehttp/guzzle:^7.0
+
+
+### Installer le module Via composer
+1. composer require lumidev/auto-redirect-to-product
 2. Lancer :
    ```bash
    bin/magento module:enable LumiDev_AutoRedirectToProduct
    bin/magento setup:upgrade
    bin/magento cache:flush
 
-### Via `app/code` :
+### Installer le module Via `app/code` :
 1. Copier le dossier `LumiDev/AutoRedirectToProduct` dans `app/code/`.
 2. Lancer :
    ```bash

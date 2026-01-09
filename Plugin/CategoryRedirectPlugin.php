@@ -6,47 +6,50 @@ use Magento\Framework\Controller\Result\RedirectFactory;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\ScopeInterface;
-
 class CategoryRedirectPlugin
 {
     protected $redirectFactory;
     protected $productCollectionFactory;
-
+    private ScopeConfigInterface $scopeConfig;
     public function __construct(
         RedirectFactory $redirectFactory,
         CollectionFactory $productCollectionFactory,
-	\Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
+        ScopeConfigInterface $scopeConfig
     ) {
         $this->redirectFactory = $redirectFactory;
         $this->productCollectionFactory = $productCollectionFactory;
-	$this->scopeConfig = $scopeConfig;
+        $this->scopeConfig=$scopeConfig;
     }
 
     public function aroundExecute(CategoryViewController $subject, \Closure $proceed)
     {
+
+
         $enabled = $this->scopeConfig->isSetFlag(
-            'autoredirecttoproduct/general/enabled',
+            'auto_redirect_toproduct/activation/enable',
             ScopeInterface::SCOPE_STORE
         );
-	if($enabled){
 
-           $categoryId = (int) $subject->getRequest()->getParam('id');
-           if (!$categoryId) {
-               return $proceed();
-           }
+        if (!$enabled) {
+            return $proceed();
+        }
 
-           $collection = $this->productCollectionFactory->create()
-               ->addCategoriesFilter(['eq' => $categoryId])
-               ->addAttributeToFilter('status', 1)
-               ->addAttributeToFilter('visibility', ['in' => [2, 3, 4]])
-               ->setPageSize(2);
+        $categoryId = (int) $subject->getRequest()->getParam('id');
+        if (!$categoryId) {
+            return $proceed();
+        }
 
-           if ($collection->getSize() === 1) {
-               $product = $collection->getFirstItem();
-               return $this->redirectFactory->create()->setUrl($product->getProductUrl());
-           }
-       
-       }
-       return $proceed();
+        $collection = $this->productCollectionFactory->create()
+            ->addCategoriesFilter(['eq' => $categoryId])
+            ->addAttributeToFilter('status', 1)
+            ->addAttributeToFilter('visibility', ['in' => [2, 3, 4]])
+            ->setPageSize(2);
+
+        if ($collection->getSize() === 1) {
+            $product = $collection->getFirstItem();
+            return $this->redirectFactory->create()->setUrl($product->getProductUrl());
+        }
+
+        return $proceed();
     }
 }
