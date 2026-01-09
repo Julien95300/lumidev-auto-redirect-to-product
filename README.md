@@ -21,7 +21,7 @@ Il améliore l'expérience client en leur faisant gagner du temps.
 
 
 ### Installer le module Via composer
-1. composer require lumidev/auto-redirect-to-product
+1. composer require lumidev/auto-redirect-to-product:dev-main
 2. Lancer :
    ```bash
    bin/magento module:enable LumiDev_AutoRedirectToProduct
